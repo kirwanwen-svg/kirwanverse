@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(git -C /Users/kirwan/Desktop/coding status)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

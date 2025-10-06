@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* 淡入动画 */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 鼠标轨迹淡出动画 */
+@keyframes trailFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* 超快悬停响应样式 */
+.image-hover-fast {
+  transition: all 0.01s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, z-index, box-shadow !important;
+}
+
+.image-hover-fast:hover {
+  z-index: 999 !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 超丝滑悬停响应 - 极致性能优化 */
+.image-hover-instant {
+  will-change: transform, z-index, box-shadow !important;
+  transform: translate3d(0, 0, 0) !important; /* 强制GPU加速 */
+  backface-visibility: hidden !important; /* 优化渲染性能 */
+  perspective: 1000px !important; /* 3D透视 */
+  contain: layout style paint !important; /* 优化渲染性能 */
+  isolation: isolate !important; /* 创建新的层叠上下文 */
+  transition: none !important; /* 默认无过渡，确保即时响应 */
+  animation: none !important; /* 禁用所有动画 */
+  transform-style: preserve-3d !important; /* 保持3D变换 */
+}
+
+.image-hover-instant:hover {
+  z-index: 999 !important;
+  transform: scale3d(1.25, 1.25, 1) translate3d(0, 0, 0) !important; /* 3D GPU加速缩放 */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+  transition: none !important; /* 完全无过渡，即时响应 */
+  animation: none !important; /* 禁用所有动画 */
+  transform-style: preserve-3d !important; /* 保持3D变换 */
+  will-change: transform, z-index, box-shadow !important; /* 优化性能 */
+}
+
+/* 丝滑离开过渡 - 使用更高级的缓动 */
+.image-hover-instant:not(:hover) {
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform, z-index, box-shadow !important;
+}
+
